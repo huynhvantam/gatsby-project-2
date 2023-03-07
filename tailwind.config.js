@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,jsx,ts,tsx}",
     "./src/components/**/*.{js,jsx,ts,tsx}",
@@ -9,9 +10,7 @@ module.exports = {
       spacing: {
         35: "35px",
       },
-      colors: {
-        "red-300": "#db2777",
-      },
+      colors: {},
     },
   },
   plugins: [],

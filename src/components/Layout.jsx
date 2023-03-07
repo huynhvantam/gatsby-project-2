@@ -1,10 +1,10 @@
 import React from "react";
 import Footer from "./Footer";
-import Narbar from "./Narbar";
+import Header from "./Header";
 const Layout = ({ children }) => {
   return (
     <>
-      <Narbar />
+      <Header />
       {children}
       <Footer />
     </>
