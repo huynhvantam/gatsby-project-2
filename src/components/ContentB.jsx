@@ -4,31 +4,17 @@ import { BiMenu } from 'react-icons/bi';
 import { GrClose } from 'react-icons/gr';
 const ContentB = () => {
   const [isOpen, setIsOpen] = useState(true);
-  return <>
-    <div className="bg-red-100 h-[1000px] flex justify-end relative ">
-      <BiMenu className=" bg-gray-700 text-yellow-500   rounded " onClick={() => setIsOpen(!isOpen)} />
-      <div className=" ">
-        {
-          isOpen && (
-            <div className="bg-red-300  w-[480px] p-12 ">
-              <div className=" bg-red-100 h-screen ">
-                <div className="flex justify-between">
-                  <img src="https://ordainit.com/Sorex/sorex/assets/img/logo/footer-logo.png" alt="" />
-                  <button onClick={() => setIsOpen(!isOpen)} ><GrClose className="" />
-                  </button>
-                </div>
+  return <div className="bg-blue-500 h-[1000px] ">Content b
 
-              </div>
 
-            </div>
-          )
-        }
+    <div class="relative">
+      <input type="checkbox" id="toggle" class="absolute opacity-0 w-0 h-0" />
+      <label for="toggle" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">Click me</label>
+      <div class="content hidden absolute bg-gray-100 py-2 px-4 rounded mt-2">
+        <p>This is the paragraph to be shown/hidden</p>
       </div>
+    </div></div>
 
-
-    </div >;
-
-  </>
 };
 
 export default ContentB;

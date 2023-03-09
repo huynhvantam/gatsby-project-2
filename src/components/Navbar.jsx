@@ -3,24 +3,76 @@ import { Link } from "gatsby";
 import creativeAgency from "../pages/home/creativeAgency"
 import { useState } from "react";
 import NavLi from "./navbar/NavLi";
+import { BiMenu } from 'react-icons/bi';
+import { GrClose } from 'react-icons/gr';
+import { BsPlusSquare } from 'react-icons/bs';
+import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  // const toggleMenu = () => {
-  //   setIsOpen(!isOpen);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
+  const handleClick = () => {
+    setIsHidden(!isHidden);
+  };
 
-  // };
-  // const dropdownClasses = `absolute z-10 bg-white ${isOpen ? "block" : "hidden"}`;
+
   return (
-    <div className="">
-      <div className=" ">
-        <nav className=" px-[30px] 2xl:px-[100px]  grid grid-cols-12 ">
+
+    <div className="container">
+
+      {/*=== ----------=== toggleMenu === ---------- ===*/}
+      <div className="">
+        {
+          isOpen && (
+            <div className="flex h-screen fixed  w-screen z-20">
+              {/* --- === container menu === --- */}
+              <div className="flex-1 opacity-80 bg-gray-600 " onClick={() => setIsOpen(!isOpen)}></div>
+              <div className="w-full  max-w-[480px] bg-black  overflow-y-auto p-12">
+
+                {/* --- === logo, close === --- */}
+                <div className="flex justify-between pb-12 items-center">
+                  <img src="https://ordainit.com/Sorex/sorex/assets/img/logo/footer-logo.png" alt="" />
+                  <AiOutlineClose className="text-gray-600 cursor-pointer  text-3xl" onClick={() => setIsOpen(!isOpen)} ></AiOutlineClose>
+                </div>
+
+                {/* ----=== side bar menu ===--- */}
+                <div className="">
+                  {/* --- menu list --- */}
+                  <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                    <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">HOME</div>
+                    {isHidden ? <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={handleClick} />
+                      : <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={handleClick} />
+                    }
+                  </div>
+                  {/* --- menu list item ---  */}
+                  <div className={` ${isHidden ? 'hidden' : ''}`}>
+                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                      CREATIVE AGENCY</Link>
+                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                      PERSONAL PORTFOLIO</Link>
+                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                      STARTUP BUSINESS</Link>
+                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                      DIGITAL AGENCYIT</Link>
+                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                      SERVICE AGENCY</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          )
+        }
+      </div>
+      <div className="fixed w-screen">
+
+        <nav className=" bg-blue-100 px-[30px] 2xl:px-[100px]  grid grid-cols-12 "  >
           {/* ----------===logo===---------- */}
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           />
           <div
-            className="col-start-1 col-span-6  lg:col-start-1 lg:col-span-3 xl:col-start-1 xl:col-span-3
+            className="bg-red-100 col-start-1 col-span-6  lg:col-start-1 lg:col-span-3 xl:col-start-1 xl:col-span-3
          px-[15px] py-[20px]
         "
           >
@@ -30,7 +82,7 @@ const Navbar = () => {
             />
           </div>
           {/* ----------===nav===---------- */}
-          <div className="hidden lg:block xl:  xl:col-start-4 xl:col-span-6 lg:col-start-4 lg:col-span-7">
+          <div className="hidden bg-red-300 lg:block xl:  xl:col-start-4 xl:col-span-6 lg:col-start-4 lg:col-span-7">
             <nav
               className=" col-start-4 col-span-6
              xl:px-[15px] flex justify-center font-semibold "
@@ -258,7 +310,7 @@ const Navbar = () => {
           {/* ----------===menu===---------- */}
           <div
             className="col-start-7 col-span-6 xl:col-start-10 xl:col-span-3 lg:col-start-11 lg:col-span-2
-          relative   px-[15px] flex justify-between items-center"
+          relative  bg-green-200 px-[15px] flex justify-between items-center"
           >
             <button
               className=" hidden xl:inline-block 
@@ -269,15 +321,17 @@ const Navbar = () => {
             </button>
             <button
               className="absolute top-2/4 left-full translate-x-[-125%] translate-y-[-50%]
-           bg-gray-700 h-[52px] w-[52px]  "
+           bg-gray-700 h-[52px] w-[52px] flex justify-center items-center  "
             >
-              <i className="fas fa-bars text-yellow-500 border-[12px] border-gray-700 rounded "></i>
+              <BiMenu className=" text-yellow-500  text-4xl" onClick={() => setIsOpen(!isOpen)} />
             </button>
+
           </div>
         </nav >
       </div>
     </div>
   );
 };
+
 
 export default Navbar;
