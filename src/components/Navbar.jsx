@@ -9,10 +9,11 @@ import { BsPlusSquare } from 'react-icons/bs';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isHidden, setIsHidden] = useState(true);
-  const handleClick = () => {
-    setIsHidden(!isHidden);
-  };
+  const [isHiddenMenu1, setIsHiddenMenu1] = useState(false);
+  const [isHiddenMenu2, setIsHiddenMenu2] = useState(false);
+  const [isHiddenMenu3, setIsHiddenMenu3] = useState(false);
+  const [isHiddenMenu4, setIsHiddenMenu4] = useState(false);
+  const [isHiddenMenu5, setIsHiddenMenu5] = useState(false);
 
 
   return (
@@ -23,10 +24,10 @@ const Navbar = () => {
       <div className="">
         {
           isOpen && (
-            <div className="flex h-screen fixed  w-screen z-20">
+            <div className="flex h-screen fixed  w-screen z-20 ">
               {/* --- === container menu === --- */}
-              <div className="flex-1 opacity-80 bg-gray-600 " onClick={() => setIsOpen(!isOpen)}></div>
-              <div className="w-full  max-w-[480px] bg-black  overflow-y-auto p-12">
+              <div className="flex-1 opacity-80 bg-gray-600" onClick={() => setIsOpen(!isOpen)}></div>
+              <div className="w-full  max-w-[480px] bg-black  overflow-y-auto p-12 ">
 
                 {/* --- === logo, close === --- */}
                 <div className="flex justify-between pb-12 items-center">
@@ -34,27 +35,172 @@ const Navbar = () => {
                   <AiOutlineClose className="text-gray-600 cursor-pointer  text-3xl" onClick={() => setIsOpen(!isOpen)} ></AiOutlineClose>
                 </div>
 
-                {/* ----=== side bar menu ===--- */}
-                <div className="">
-                  {/* --- menu list --- */}
-                  <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
-                    <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">HOME</div>
-                    {isHidden ? <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={handleClick} />
-                      : <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={handleClick} />
-                    }
+                <div className=" lg:hidden">
+                  {/* ----=== side bar menu 1 ===--- */}
+                  <div className="">
+                    {/* --- menu list --- */}
+                    <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                      <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">HOME</div>
+                      {isHiddenMenu1 ?
+                        <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu1(!isHiddenMenu1)} />
+                        :
+                        <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu1(!isHiddenMenu1)} />
+                      }
+
+                    </div>
+                    {/* --- menu list item ---  */}
+                    <div>
+                      {
+                        isHiddenMenu1 && (
+                          <div>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              CREATIVE AGENCY</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              PERSONAL PORTFOLIO</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              STARTUP BUSINESS</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              DIGITAL AGENCYIT</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              SERVICE AGENCY</Link>
+                          </div>
+                        )
+                      }
+                    </div>
                   </div>
-                  {/* --- menu list item ---  */}
-                  <div className={` ${isHidden ? 'hidden' : ''}`}>
-                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
-                      CREATIVE AGENCY</Link>
-                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
-                      PERSONAL PORTFOLIO</Link>
-                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
-                      STARTUP BUSINESS</Link>
-                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
-                      DIGITAL AGENCYIT</Link>
-                    <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
-                      SERVICE AGENCY</Link>
+
+                  {/* ----=== side bar menu 2 ===--- */}
+                  <div className="">
+                    {/* --- menu list --- */}
+                    <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                      <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">SERVICE</div>
+                      {isHiddenMenu2 ?
+                        <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu2(!isHiddenMenu2)} />
+                        :
+                        <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu2(!isHiddenMenu2)} />
+                      }
+                    </div>
+                    {/* --- menu list item ---  */}
+                    <div>
+                      {
+                        isHiddenMenu2 && (
+                          <div>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              CREATIVE AGENCY</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              PERSONAL PORTFOLIO</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              STARTUP BUSINESS</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              DIGITAL AGENCYIT</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              SERVICE AGENCY</Link>
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+
+                  {/* ----=== side bar menu 3===--- */}
+                  <div className="">
+                    {/* --- menu list --- */}
+                    <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                      <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">PAGE</div>
+                      {isHiddenMenu3 ?
+                        <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu3(!isHiddenMenu3)} />
+                        :
+                        <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu3(!isHiddenMenu3)} />
+                      }
+                    </div>
+                    {/* --- menu list item ---  */}
+                    <div>
+                      {
+                        isHiddenMenu3 && (
+                          <div>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              CREATIVE AGENCY</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              PERSONAL PORTFOLIO</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              STARTUP BUSINESS</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              DIGITAL AGENCYIT</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              SERVICE AGENCY</Link>
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+
+                  {/* ----=== side bar menu 4 ===--- */}
+                  <div className="">
+                    {/* --- menu list --- */}
+                    <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                      <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">BLOG</div>
+                      {isHiddenMenu4 ?
+                        <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu4(!isHiddenMenu4)} />
+                        :
+                        <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu4(!isHiddenMenu4)} />
+                      }
+                    </div>
+                    {/* --- menu list item ---  */}
+                    <div>
+                      {
+                        isHiddenMenu4 && (
+                          <div>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              CREATIVE AGENCY</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              PERSONAL PORTFOLIO</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              STARTUP BUSINESS</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              DIGITAL AGENCYIT</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              SERVICE AGENCY</Link>
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+
+                  {/* ----=== side bar menu 5===--- */}
+                  <div className="">
+                    {/* --- menu list --- */}
+                    <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                      <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">ABOUT</div>
+                      {isHiddenMenu5 ?
+                        <AiOutlineClose className="text-gray-600  font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu5(!isHiddenMenu5)} />
+                        :
+                        <AiOutlinePlus className="text-white hover:text-yellow-400 font-bold text-3xl border border-gray-600 cursor-pointer" onClick={() => setIsHiddenMenu5(!isHiddenMenu5)} />
+                      }
+                    </div>
+                    {/* --- menu list item ---  */}
+                    <div>
+                      {
+                        isHiddenMenu5 && (
+                          <div>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              CREATIVE AGENCY</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              PERSONAL PORTFOLIO</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              STARTUP BUSINESS</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              DIGITAL AGENCYIT</Link>
+                            <Link to="/home/creativeAgency" className="font-bold text-sm pl-9 flex justify-between items-center border-b border-gray-600 py-3  text-white hover:text-yellow-400">
+                              SERVICE AGENCY</Link>
+                          </div>
+                        )
+                      }
+                    </div>
+                  </div>
+
+                  {/* ---- === side bar menu 6 === --- */}
+                  <div className=" flex justify-between items-center py-4 border-b border-gray-600 ">
+                    <div className="  font-bold  text-sm cursor-pointer w-full text-white hover:text-yellow-400 ">CONTACT</div>
+
                   </div>
                 </div>
               </div>
